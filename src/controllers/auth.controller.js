@@ -19,3 +19,12 @@ export const registerUser = async (data) => {
         return error;
     }
 }
+
+export const deleteProfile = async () => {
+    try {
+        const res = await axios.delete(`${baseURL}auth/delete`)
+        return res;
+    } catch (error) {
+        return error;
+    }
+}
