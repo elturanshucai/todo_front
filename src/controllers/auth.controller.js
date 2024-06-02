@@ -19,8 +19,3 @@ export const registerUser = async (data) => {
         return error;
     }
 }
-
-export const logout = () => {
-    localStorage.removeItem('todoUser')
-    window.location.href = '/login'
-}

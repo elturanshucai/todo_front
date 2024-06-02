@@ -5,15 +5,18 @@ import { MdError } from 'react-icons/md';
 import { registerUser } from '../controllers/auth.controller';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { signIn } from '../redux/userSlice';
 
 const Register = () => {
     const [passwordType, setPasswordType] = useState(true)
     const { register, handleSubmit, formState: { errors } } = useForm()
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const submitForm = async (data) => {
         const user = await registerUser(data)
         if (user.status === 201) {
-            localStorage.setItem('todoUser', JSON.stringify(user.data))
+            dispatch(signIn(user.data))
             toast.success('Welcome!')
             navigate('/')
         } else {

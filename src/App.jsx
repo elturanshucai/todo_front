@@ -5,12 +5,13 @@ import Login from "./pages/Login"
 import { Toaster } from 'react-hot-toast'
 import axios from "axios"
 import Register from "./pages/Register"
+import { useSelector } from "react-redux"
 
 
 function App() {
 
-  const user = JSON.parse(localStorage.getItem('todoUser'))
-  axios.defaults.headers.common['Authorization'] = `Bearer ${user?.token}`
+  const { currentUser } = useSelector(state => state.user)
+  axios.defaults.headers.common['Authorization'] = `Bearer ${currentUser?.token}`
 
   return (
     <BrowserRouter>

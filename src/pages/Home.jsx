@@ -4,11 +4,13 @@ import toast from 'react-hot-toast'
 import TodoItem from '../components/TodoItem'
 import CreateTodo from '../components/CreateTodo'
 import { GiExitDoor } from "react-icons/gi";
-import { logout } from '../controllers/auth.controller'
+import { useDispatch } from 'react-redux'
+import { signOut } from '../redux/userSlice'
 
 const Home = () => {
     const [todos, setTodos] = useState([])
     const [createModal, setCreateModal] = useState(false)
+    const dispatch = useDispatch()
 
     const getMyTodos = async () => {
         const res = await getUserTodos()
@@ -38,7 +40,7 @@ const Home = () => {
                 <button
                     type='button'
                     className='px-4 py-2 text-white bg-red-500 font-semibold flex items-center gap-2 rounded-sm'
-                    onClick={() => logout()}
+                    onClick={() => dispatch(signOut())}
                 >
                     Log Out
                     <GiExitDoor />
