@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useEffect } from 'react'
 import Modal from './Modal'
 import { useForm } from 'react-hook-form'
 import { updateTodo, viewTodo } from '../controllers/todo.controller'
@@ -28,7 +28,7 @@ const UpdateTodo = ({ modalIsOpen, getData, id }) => {
         }
     }
 
-    useMemo(() => {
+    useEffect(() => {
         getTodoData()
     }, [id])
     return (
