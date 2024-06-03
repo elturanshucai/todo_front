@@ -8,12 +8,12 @@ const TodoItem = ({ item, getData }) => {
     const [updateModal, setUpdateModal] = useState(false)
     const changeUpdateModal = useCallback(() => {
         setUpdateModal(true)
-    })
+    }, [item.id])
 
     const completeTask = useCallback(async () => {
         const res = await deleteTodo(item.id)
         if (res.status === 200) getData()
-    })
+    }, [item.id])
     return (
         <>
             <li className='flex p-4 border border-blue-500 rounded-sm items-center justify-between gap-4'>
