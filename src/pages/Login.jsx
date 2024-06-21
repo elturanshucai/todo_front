@@ -34,6 +34,7 @@ const Login = () => {
                     Username <span className='ml-1 font-bold text-red-500'>*</span>
                 </label>
                 <input
+                    autoComplete='off'
                     id='username'
                     type="text"
                     className='rounded border border-blue-500 outline-2 focus:outline-offset-2 focus:outline-blue-300 px-2 py-1'
